@@ -8,13 +8,13 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ApplicationLogger } from 'src/services';
+import { ApplicationLoggerService } from './logger.service';
 
 @Injectable()
-export class LoggingInterceptor implements NestInterceptor {
+export class LoggerInterceptor implements NestInterceptor {
 
-    constructor(private applicationLogger: ApplicationLogger) {
-        this.applicationLogger.setContext('LoggingInterceptor')
+    constructor(private applicationLogger: ApplicationLoggerService) {
+        this.applicationLogger.setContext('LoggerInterceptor')
     }
 
     intercept(

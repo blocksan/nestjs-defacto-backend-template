@@ -1,11 +1,11 @@
 import { Injectable, Inject, Logger } from '@nestjs/common';
-import { ApplicationLogger } from './logger.service';
+import { ApplicationLoggerService } from '../logger/logger.service';
 
 @Injectable()
 export class AppService {
 
   
-  constructor(private appLogger: ApplicationLogger){
+  constructor(private appLogger: ApplicationLoggerService){
     this.appLogger.setContext('AppService')
   }
 

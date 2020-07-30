@@ -1,11 +1,10 @@
 import { Catch, ExceptionFilter, HttpException, ArgumentsHost, HttpStatus, Logger} from '@nestjs/common'
-import { ApplicationLogger } from 'src/services'
-
+import { ApplicationLoggerService } from 'src/logger/logger.service'
 
 @Catch()
 export class HttpErrorFilter implements ExceptionFilter{
 
-    constructor(private applicationLogger: ApplicationLogger){
+    constructor(private applicationLogger: ApplicationLoggerService){
         this.applicationLogger.setContext('Exception')
     }
 
@@ -14,7 +13,6 @@ export class HttpErrorFilter implements ExceptionFilter{
         const request = ctx.getRequest()
         const response = ctx.getResponse()
         const status = exception.getStatus()
-        
         
         /**
          * prepare the custom error message

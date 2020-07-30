@@ -1,13 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './modules';
+import { AppModule } from './app/app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { ApplicationLogger } from './services';
 import { Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule,{logger:false});
+  const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('/api')
-  app.useLogger(new ApplicationLogger())
 
   const options = new DocumentBuilder()
     .setTitle('Backend Service')
@@ -15,9 +14,16 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
+
+  /**
+   * import port from the configuration
+   */
+
+  const configService = app.get(ConfigService)
+  const port = configService.get('APP_PORT')
   SwaggerModule.setup('swagger', app, document);
   await app.listen(3001,() => {
-    Logger.log(`Service started at 3001 port`)
+    Logger.log(`Service started at ${port} port`)
   });
 }
 bootstrap();

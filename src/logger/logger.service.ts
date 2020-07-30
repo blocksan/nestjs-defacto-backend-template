@@ -1,4 +1,4 @@
 import { Injectable, Scope, Logger } from '@nestjs/common';
 
 @Injectable({ scope: Scope.TRANSIENT })
-export class ApplicationLogger extends Logger {}
+export class ApplicationLoggerService extends Logger {}
