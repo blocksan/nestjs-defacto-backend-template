@@ -1,2 +1,12 @@
 ###
-GET http://localhost:3001/api/app
+GET http://localhost:3000/api/app
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzIiwic3ViIjoyLCJpYXQiOjE1OTYxODU4NTAsImV4cCI6MTU5NjE4NTkxMH0.BKiT59V_xuuoOkJ2-glwsQPW9dY9CH-y0-I9cx-x4E8
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "chris",
+    "password": "secret"
+}

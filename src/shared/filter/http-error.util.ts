@@ -1,5 +1,6 @@
 import { Catch, ExceptionFilter, HttpException, ArgumentsHost, HttpStatus, Logger} from '@nestjs/common'
 import { ApplicationLoggerService } from 'src/logger/logger.service'
+import { exec } from 'child_process'
 
 @Catch()
 export class HttpErrorFilter implements ExceptionFilter{
@@ -12,7 +13,8 @@ export class HttpErrorFilter implements ExceptionFilter{
         const ctx = host.switchToHttp()
         const request = ctx.getRequest()
         const response = ctx.getResponse()
-        const status = exception.getStatus()
+        const status = exception.getStatus ? exception.getStatus() : '5005'
+        const exceptionResponse : any = exception.getResponse ? exception.getResponse() : {error: 'Internal Server Error'}
         
         /**
          * prepare the custom error message
@@ -22,10 +24,12 @@ export class HttpErrorFilter implements ExceptionFilter{
             timestamp: new Date().toLocaleString(),
             path: request.url,
             method: request.method,
+            requestId: request.requestId,
             message:
                 status !== HttpStatus.INTERNAL_SERVER_ERROR
                 ? exception.message || null
                 : 'Internal server error',
+            error: exceptionResponse && exceptionResponse.error
             
         }
         if (status === HttpStatus.INTERNAL_SERVER_ERROR) {

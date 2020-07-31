@@ -13,9 +13,10 @@ import { ContentController } from 'src/test-content/content.controller';
 import { AppService } from './app.service';
 import { ContentService } from 'src/test-content/content.service';
 import { ContentModule } from 'src/test-content/content.module';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [ApplicationLoggerModule, ContentModule, ConfigModule.forRoot({
+  imports: [ApplicationLoggerModule,AuthModule, ContentModule, ConfigModule.forRoot({
     isGlobal: true,
     load: [dbconfig]
   }), TypeOrmModule.forRootAsync({
