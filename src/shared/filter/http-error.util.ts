@@ -6,7 +6,6 @@ import { exec } from 'child_process'
 export class HttpErrorFilter implements ExceptionFilter{
 
     constructor(private applicationLogger: ApplicationLoggerService){
-        this.applicationLogger.setContext('Exception')
     }
 
     catch(exception: HttpException, host: ArgumentsHost){
@@ -15,21 +14,21 @@ export class HttpErrorFilter implements ExceptionFilter{
         const response = ctx.getResponse()
         const status = exception.getStatus ? exception.getStatus() : '5005'
         const exceptionResponse : any = exception.getResponse ? exception.getResponse() : {error: 'Internal Server Error'}
-        
         /**
          * prepare the custom error message
          */
+        let error =  exceptionResponse && exceptionResponse.error 
+        if(exceptionResponse.message){
+            error = error ? error+' => '+exceptionResponse.message: error
+        }
         const errorResponseObject ={
             code: status,
             timestamp: new Date().toLocaleString(),
             path: request.url,
             method: request.method,
             requestId: request.requestId,
-            message:
-                status !== HttpStatus.INTERNAL_SERVER_ERROR
-                ? exception.message || null
-                : 'Internal server error',
-            error: exceptionResponse && exceptionResponse.error
+            message: status !== HttpStatus.INTERNAL_SERVER_ERROR ? exception.message : exception ? exception.message : 'Internal server error',
+            error
             
         }
         if (status === HttpStatus.INTERNAL_SERVER_ERROR) {

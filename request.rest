@@ -1,12 +1,32 @@
 ###
 GET http://localhost:3000/api/app
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzIiwic3ViIjoyLCJpYXQiOjE1OTYyODYwNDYsImV4cCI6MTU5NjI4NjEwNn0.ZGVJiLd1Hwghv-rCQ2upRJTuWYVFgFdEwZlmeWKeiKs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTYyOTE5NjAsImV4cCI6MTU5NjI5MjAyMH0.EigBEi4E6eKAw7UOKS222jDQ8Z5Wf7-FscgWGEEh2Nk
 
 ###
 POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "chris",
+    "username": "chris@gmail.com",
     "password": "secret"
+}
+
+###
+POST http://localhost:3000/api/user/dummy
+
+{
+
+}
+
+###
+GET http://localhost:3000/api/content/fetch
+
+###
+# register user
+POST http://localhost:3000/api/user/signup
+Content-Type: application/json
+
+{
+    "name": "sandeep",
+    "email": "me@sandee.com"
 }
