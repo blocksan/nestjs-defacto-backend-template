@@ -30,3 +30,9 @@ Content-Type: application/json
     "name": "sandeep",
     "email": "me@sandee.com"
 }
+
+
+###
+# Microservice call from client to server - subscriber patter
+
+GET http://localhost:3000/api/app/messagepattern

@@ -16,7 +16,11 @@ import { ContentModule } from 'src/test-content/content.module';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [ApplicationLoggerModule,AuthModule, ContentModule, ConfigModule.forRoot({
+  imports: [
+    ApplicationLoggerModule,
+    AuthModule, 
+    ContentModule, 
+    ConfigModule.forRoot({
     isGlobal: true,
     load: [dbconfig]
   }), TypeOrmModule.forRootAsync({
