@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2015",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "incremental": true,
-    "baseUrl": "./"
+      "allowJs": true,
+      "module": "commonjs",
+      "declaration": true,
+      "removeComments": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "target": "es2017",
+      "sourceMap": true,
+      "outDir": "./dist",
+      "incremental": true,
+      "baseUrl": "./",
+      "esModuleInterop": true
   }
 }
