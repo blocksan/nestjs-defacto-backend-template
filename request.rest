@@ -1,6 +1,6 @@
 ###
 GET http://localhost:3000/api/app
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTYyOTE5NjAsImV4cCI6MTU5NjI5MjAyMH0.EigBEi4E6eKAw7UOKS222jDQ8Z5Wf7-FscgWGEEh2Nk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjI5Mzc3ODI2LCJleHAiOjE2MjkzNzc4ODZ9.qG81DBOVM_z02S81aTlZs-bG5zT7vUOLWMyhtH0WdNs
 
 ###
 POST http://localhost:3000/api/auth/login
